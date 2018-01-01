@@ -1,0 +1,72 @@
+{
+    "fields": [
+        {
+            "name": "imei_product",
+            "type": "string"
+        },
+        {
+            "name": "label",
+            "type": "string"
+        },
+        {
+            "name": "model",
+            "type": "string"
+        },
+        {
+            "name": "enabled_date",
+            "type": "date"
+        },
+        {
+            "name": "state",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        },
+         {
+            "name": "movement_id",
+            "type": "integer#unsigned"
+        },
+         {
+            "name": "observtion",
+            "type": "string"
+        },
+        {
+            "name": "user_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "user_id",
+            "references": "id",
+            "on": "users",
+            "onDelete": "cascade"
+        },
+        {
+            "column": "movement_id",
+            "references": "id",
+            "on": "movements",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\Models\\User"
+        }
+        , {
+            "name": "movements",
+            "type": "belongsTo",
+            "class": "App\\Models\\Movement"
+        }
+    ],
+    "validations": [
+        {
+            "field": "imei_product",
+            "rules": "required"
+        }
+    ]
+}
